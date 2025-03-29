@@ -1,0 +1,12 @@
+TIMEZONE: "Europe/Brussels"
+
+DATA: time
+
+COLOURS:
+  first_digit: None
+  second_digit: None
+  third_digit: None
+  fourth_digit: None
+
+SYNC_REFRESH_RATE: 300 # seconds
+DISPLAY_REFRESH_RATE: 10 # seconds
