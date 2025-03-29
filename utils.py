@@ -15,10 +15,10 @@ def getDateTime() -> datetime:
     return brussels_time
 
 def getTime() -> np.array:
-    time = getDateTime().time
-    hours = datetime.hour
-    minutes = datetime.minute
-    seconds = datetime.second
+    time = getDateTime().time()
+    hours = time.hour
+    minutes = time.minute
+    seconds = time.second
     return np.array([hours, minutes, seconds])
 
 def getDate() -> np.array:
@@ -32,6 +32,6 @@ def getDate() -> np.array:
 
 def randomCoord(max_x: int = 0, max_y: int = 0):
     """returns random 2D coordinate inside given bounds"""
-    x = random.randrange(0, max_x, 1)
-    y = random.randrange(0, max_y, 1)
+    x = random.randrange(0, max_x+1, 1)
+    y = random.randrange(0, max_y+1, 1)
     return np.array([x, y])

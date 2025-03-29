@@ -3,11 +3,17 @@ import time
 import ntplib
 import utils
 
+from clock import Clock
+
+
+
+
+
 def main():
 
-    current_datetime = utils.getDateTime()
-    print(current_datetime)
-    pass
+    myClock = Clock()
+    print(myClock)
+
 
 
 
