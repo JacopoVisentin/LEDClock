@@ -7,12 +7,6 @@ from clock import Clock
 
 
 def main():
-
-    
-
-
-
-
     pass
 
 
