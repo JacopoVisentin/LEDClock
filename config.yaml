@@ -8,5 +8,5 @@ COLOURS:
   third_digit: None
   fourth_digit: None
 
-SYNC_REFRESH_RATE: 300 # seconds
+SYNC_REFRESH_RATE: 900 # seconds
 DISPLAY_REFRESH_RATE: 10 # seconds

@@ -7,9 +7,9 @@ class Clock:
 
     #  global shapes for any clock
     hour_first_shape = np.zeros(3)
-    hour_second_shape = np.zeros(9)
-    minute_first_shape = np.zeros(6)
-    minute_second_shape = np.zeros(9)
+    hour_second_shape = np.zeros((3, 3))
+    minute_first_shape = np.zeros((2, 3))
+    minute_second_shape = np.zeros((3, 3))
 
     def __init__(self):
         self.clock_time = utils.getTime()

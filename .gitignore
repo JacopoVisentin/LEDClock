@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 *.pyo
+
+# Ignore virtual environment
+.lc_venv/
+
