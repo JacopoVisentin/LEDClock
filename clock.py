@@ -12,57 +12,77 @@ class Clock:
     minute_second_shape = np.zeros((3, 3))
 
     def __init__(self):
-        self.clock_time = utils.getTime()
-        
-        self.hour_first = Clock.hour_first_shape
-        self.hour_second = Clock.hour_second_shape
-        self.minute_first = Clock.minute_first_shape
-        self.minute_second = Clock.minute_second_shape
-        
-        self.setDisplay()
+        # TODO something with this
+        # self.clock_time = utils.getTime()
+        self.clock_time = np.array([17, 38, 00])
+        self.hour = self.clock_time[0]
+        self.minute = self.clock_time[1]
+
+        self.hour_first_digit = 0
+        self.hour_second_digit = 0
+        self.minute_first_digit = 0
+        self.minute_second_digit = 0
 
 
-    def setHourFirst(self, hour: str) -> None:
-        hour_first = int(hour[0])
-        self.hour_first[hour_first] = 1
+
+    def refreshTime(self) -> None:
+        self.hour_first_digit = self.setHourFirstDigit(self.hour)
+        self.hour_second_digit = self.setHourSecondDigit(self.hour)
+        self.minute_first_digit = self.setMinuteFirstDigit(self.minute)
+        self.minute_second_digit = self.setMinuteSecondDigit(self.minute)
+
+
+    def setHourFirstDigit(self, hour: int) -> None:
+        hour_str = str(hour)
+        if (len(hour_str)) < 2:
+            self.hour_first_digit = 0
+        if (len(hour_str) == 2):
+            self.hour_first_digit = hour_str[0]
+        print(self.hour_first_digit)
         pass
 
-    def setHourSecond(self, hour: str) -> None:
-        hour_second = int(hour[1])
-        self.hour_second[hour_second] = 1
+    def setHourSecondDigit(self, hour: int) -> None:
+        hour_str = str(hour)
+        if (len(hour_str)) < 2:
+            self.hour_second_digit = hour
+        if (len(hour_str) == 2):
+            self.hour_second_digit = hour_str[1]
+        print(self.hour_second_digit)
         pass
     
-    def setMinuteFirst(self, minute: str) -> None:
-        minute_first = int(minute[0])
-        print(minute_first)
-        self.minute_first[minute_first] = 1
+    def setMinuteFirstDigit(self, minute: int) -> None:
+        minute_str = str(minute)
+        if (len(minute_str)) < 2:
+            self.minute_first_digit = 0
+        if (len(minute_str) == 2):
+            self.minute_first_digit = minute_str[0]
+        print(self.minute_first_digit)
         pass
 
-    def setMinuteSecond(self, minute: str) -> None:
-        minute_second = int(minute[1])
-        print(minute_second)
-        self.minute_second[minute_second] = 1
+    def setMinuteSecondDigit(self, minute: int) -> None:
+        minute_str = str(minute)
+        if (len(minute_str)) < 2:
+            self.minute_second_digit = 0
+        if (len(minute_str) == 2):
+            self.minute_second_digit = minute_str[0]
+        print(self.minute_second_digit)
         pass
 
     def setDisplay(self):
-        hours = str(self.clock_time[0])
-        minutes = str(self.clock_time[1])
-        self.setHourFirst(hours)
-        self.setHourSecond(hours)
-        self.setMinuteFirst(minutes)
-        self.setMinuteSecond(minutes)
+        # hours = str(self.clock_time[0])
+        # minutes = str(self.clock_time[1])
+        # self.setHourFirst(hours)
+        # self.setHourSecond(hours)
+        # self.setMinuteFirst(minutes)
+        # self.setMinuteSecond(minutes)
         return self
 
 
     def __str__(self):
         
-        print(self.hour_first, "\n")
-        print(self.hour_second, "\n")
-        print(self.minute_first, "\n")
-        print(self.minute_second, "\n")
+        # print(self.hour_first, "\n")
+        # print(self.hour_second, "\n")
+        # print(self.minute_first, "\n")
+        # print(self.minute_second, "\n")
         return ""
 
-
-    def showHourFirst(hour: int):
-        digit = (str(hour))[0]
-        return digit
