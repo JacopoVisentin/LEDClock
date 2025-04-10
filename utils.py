@@ -39,22 +39,13 @@ def getDate() -> np.array:
 ### COORDINATES
 #############################
 
-def randomCoord(max_n: int = 0, max_m: int = 0):
-    """returns random 2D coordinate inside given bounds"""
-    n = random.randint(0, max_n)
-    m = random.randint(0, max_m)
-    return np.array([n, m])
-
-def generateNCoords(n: int, max_n: int, max_m: int) -> np.array:
+def generateNCoords(n: int, max_n: int, max_m: int) -> np.ndarray:
     
-    if n > (max_n+1)*(max_m+1):
-        raise ValueError("Requested more led coordinates than there exists")
-    
-    coords = []
-    while (len(coords) < n):
-        new_coord = randomCoord(max_n, max_m)
-        if not any((new_coord == element).all() for element in coords):
-            coords.append(new_coord)
-        del new_coord
-    
-    return np.array(coords)
+    total_grid_spaces = (max_n + 1) * (max_m + 1)
+    if n > total_grid_spaces:
+        raise ValueError("Requested more coordinates than the grid contains")
+    # Generate all possible coords and shuffle them
+    all_coords = np.array([(i, j) for i in range(max_n + 1) for j in range(max_m + 1)])
+    np.random.shuffle(all_coords)
+    # Return the n first coords
+    return all_coords[:n]
