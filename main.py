@@ -1,16 +1,14 @@
-import numpy as np
 import time
-import utils
-from icecream import ic
 
-from clock import Clock
+import clock.utils as utils
+from clock.clock_display import ClockDisplay
 
 
 def main():
 
     REFRESH_INTERVAL = 5
 
-    clock = Clock()
+    clock = ClockDisplay()
     last_refreshed_LEDs = time.time()-(REFRESH_INTERVAL-1)
 
     while True:

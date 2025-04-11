@@ -1,10 +1,10 @@
 import numpy as np
 import time
 import ntplib
-import utils
+import clock.utils as utils
 import random
 from icecream import ic
 
-from clock import Clock
+from clock.clock_display import ClockDisplay
 
 

@@ -1,10 +1,10 @@
 import numpy as np
-import utils
 
-from clock_timer import ClockTimer
+import clock.utils as utils
+from clock.clock_timer import ClockTimer
 
 
-class Clock:
+class ClockDisplay:
 
     def __init__(self):
 

@@ -1,0 +1,7 @@
+asttokens==3.0.0
+colorama==0.4.6
+executing==2.2.0
+icecream==2.1.4
+ntplib==0.4.0
+numpy==2.2.4
+Pygments==2.19.1
