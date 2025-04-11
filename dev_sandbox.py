@@ -8,5 +8,3 @@ from icecream import ic
 from clock import Clock
 
 
-myClock = Clock()
-print(myClock)

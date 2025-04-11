@@ -1,32 +1,27 @@
 import numpy as np
 import utils
-from icecream import ic
+
+from clock_timer import ClockTimer
 
 
 class Clock:
 
-    #  global shapes for any clock
-    hour_first_shape = np.zeros(3)
-    hour_second_shape = np.zeros((3, 3))
-    minute_first_shape = np.zeros((2, 3))
-    minute_second_shape = np.zeros((3, 3))
-
     def __init__(self):
-        # TODO something with this
-        # self.clock_time = utils.getTime()
-        self.clock_time = np.array([17, 38, 00])
-        self.hour = self.clock_time[0]
-        self.minute = self.clock_time[1]
+
+        self.timer = ClockTimer()
+        now = self.timer.now()
+        self.hour = now.hour
+        self.minute = now.minute
 
         self.hour_first_digit = 0
         self.hour_second_digit = 0
         self.minute_first_digit = 0
         self.minute_second_digit = 0
 
-        self.hour_first_leds = Clock.hour_first_shape
-        self.hour_second_leds = Clock.hour_second_shape
-        self.minute_first_leds = Clock.minute_first_shape
-        self.minute_second_leds = Clock.minute_second_shape
+        self.hour_first_leds = np.zeros(3)
+        self.hour_second_leds = np.zeros((3,3))
+        self.minute_first_leds = np.zeros((2,3))
+        self.minute_second_leds = np.zeros((3,3))
 
         self.setAllDigits()
         self.setAllLedsOn()
@@ -44,7 +39,6 @@ class Clock:
             self.hour_first_digit = 0
         if (len(hour_str) == 2):
             self.hour_first_digit = int(hour_str[0])
-        # ic(self.hour_first_digit)
         pass
     def setHourSecondDigit(self, hour: int) -> None:
         hour_str = str(hour)
@@ -52,7 +46,6 @@ class Clock:
             self.hour_second_digit = int(hour)
         if (len(hour_str) == 2):
             self.hour_second_digit = int(hour_str[1])
-        # ic(self.hour_second_digit)
         pass
     def setMinuteFirstDigit(self, minute: int) -> None:
         minute_str = str(minute)
@@ -60,7 +53,6 @@ class Clock:
             self.minute_first_digit = 0
         if (len(minute_str) == 2):
             self.minute_first_digit = int(minute_str[0])
-        # ic(self.minute_first_digit)
         pass
     def setMinuteSecondDigit(self, minute: int) -> None:
         minute_str = str(minute)
@@ -68,7 +60,6 @@ class Clock:
             self.minute_second_digit = int(minute)
         if (len(minute_str) == 2):
             self.minute_second_digit = int(minute_str[1])
-        # ic(self.minute_second_digit)
         pass
  
 
@@ -107,29 +98,29 @@ class Clock:
 
     # Reset the led matrix to 0 before setting again
     def resetHourFirstLeds(self) -> None:
-        self.hour_first_leds = Clock.hour_first_shape
+        self.hour_first_leds = np.zeros(3)
         pass
     def resetHourSecondLeds(self) -> None:
-        self.hour_second_leds = Clock.hour_second_shape
+        self.hour_second_leds = np.zeros((3,3))
         pass
     def resetMinuteFirstLeds(self) -> None:
-        self.minute_first_leds = Clock.minute_first_shape
+        self.minute_first_leds = np.zeros((2,3))
         pass
     def resetMinuteSecondLeds(self) -> None:
-        self.minute_second_leds = Clock.minute_second_shape
+        self.minute_second_leds = np.zeros((3,3))
         pass
 
 
+    def refreshLEDs(self) -> None:
+        now = self.timer.now()
+        self.hour = now.hour
+        self.minute = now.minute
+        self.setAllDigits()
+        self.setAllLedsOn()
 
-    # def __str__(self):
-        
-    #     print(self.hour_first_leds, "\n\n")
-    #     print(self.hour_second_leds, "\n\n")
-    #     print(self.minute_first_leds, "\n\n")
-    #     print(self.minute_second_leds, "\n\n")
-    #     return ""
 
     def __str__(self):
+        print("\n")
         emoji_off = "⬛"
 
         emoji_h_f = "🟥"

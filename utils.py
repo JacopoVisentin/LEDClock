@@ -1,4 +1,4 @@
-import random
+import os
 import numpy as np
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -6,32 +6,22 @@ import ntplib
 
 
 
+def clearTerminal() -> None:
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+
 #############################
 ### TIME INFO EXTRACTION
 #############################
 
-def getDateTime() -> datetime:
+def getReferenceDateTime(timezone_str: str) -> datetime:
     client = ntplib.NTPClient()
     response = client.request('pool.ntp.org')
     timestamp = response.tx_time # convert to epoch time
-    current_timezone = "Europe/Brussels" # set timezone explicitly
+    current_timezone = timezone_str # set timezone explicitly
     brussels_time = datetime.fromtimestamp(timestamp, tz=ZoneInfo(current_timezone)) # convert to human readable time + timezone offset
     return brussels_time
-
-def getTime() -> np.array:
-    time = getDateTime().time()
-    hours = time.hour
-    minutes = time.minute
-    seconds = time.second
-    return np.array([hours, minutes, seconds])
-
-def getDate() -> np.array:
-    date = getDateTime().date()
-    year = date.year
-    month = date.month
-    day = date.day
-    return np.array([day, month, year])
-
 
 
 
