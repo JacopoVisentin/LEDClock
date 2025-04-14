@@ -20,8 +20,8 @@ def getReferenceDateTime(timezone_str: str) -> datetime:
     response = client.request('pool.ntp.org')
     timestamp = response.tx_time # convert to epoch time
     current_timezone = timezone_str # set timezone explicitly
-    brussels_time = datetime.fromtimestamp(timestamp, tz=ZoneInfo(current_timezone)) # convert to human readable time + timezone offset
-    return brussels_time
+    local_time = datetime.fromtimestamp(timestamp, tz=ZoneInfo(current_timezone)) # convert to human readable time + timezone offset
+    return local_time
 
 
 

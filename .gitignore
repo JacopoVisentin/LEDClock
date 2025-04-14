@@ -6,3 +6,6 @@ __pycache__/
 # Ignore virtual environment
 .lc_venv/
 
+# Ignore vscode config file
+.vscode/
+
